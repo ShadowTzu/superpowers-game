@@ -47,7 +47,12 @@ export default class TextRenderer extends SupEngine.ActorComponent {
         mesh.material.transparent = true;
         mesh.material.opacity = this.opacity;
       } else {
-        mesh.material.transparent = false;
+        if (this.font.filtering === "smooth") {
+					mesh.material.transparent = true;
+				}
+				else {
+					mesh.material.transparent = false;
+				}
         mesh.material.opacity = 1;
       }
     }
